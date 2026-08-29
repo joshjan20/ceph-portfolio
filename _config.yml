@@ -1,0 +1,3 @@
+theme: jekyll-theme-cayman
+title: Ceph and Distributed Storage, A Hands-On Portfolio
+description: A 10-part hands-on Ceph project, including two upstream pull requests to ceph/ceph
