@@ -4,9 +4,9 @@
 
 I come from a software and infrastructure automation background, hands-on with AWS, Ansible at scale, and reliability-critical systems. What pulled me toward Ceph specifically was a simple question I couldn't stop thinking about: when AWS S3 advertises 99.999999999% durability, what does that actually mean, mechanically? Not as a marketing number, but as a system you could build, break, and watch recover.
 
-So I built one. A real 3-node Ceph cluster, from scratch, on my own infrastructure. Once it was running, I kept finding more worth digging into: what happens when a node actually dies, why a certificate was silently failing, how to see the cluster's health at a glance instead of squinting at terminal output, how it performs under load. A few of those threads led further than I expected, including two pull requests I ended up opening against `ceph/ceph` itself.
+So I built one. A real 3-node Ceph cluster, from scratch, on my own infrastructure. Once it was running, I kept finding more worth digging into: what happens when a node actually dies, why a certificate was silently failing, how to see the cluster's health at a glance instead of squinting at terminal output, how it performs under load. A few of those threads led further than I expected, including 5 pull requests I've now opened against `ceph/ceph` itself, four code fixes with regression tests and one documentation contribution.
 
-This page links to that work as it stands. Each project below is documented as I actually did it, real command output, real screenshots, and in two cases, live pull requests still working their way through review.
+This page links to that work as it stands. Each project below is documented as I actually did it, real command output, real screenshots, and in several cases, live pull requests still working their way through review.
 
 I'm particularly interested in the operational side of distributed storage at scale: how systems like Ceph get run reliably across large clusters and multiple data centers, the tooling and automation that makes that sustainable, and the open-source community that maintains it. That's the direction I want to keep learning in.
 
@@ -26,13 +26,19 @@ I'm particularly interested in the operational side of distributed storage at sc
 | 8 | [ceph-benchmarking](https://joshjan20.github.io/ceph-benchmarking/) | Performance benchmarking (throughput vs. IOPS, large vs. small objects) with a generated, self-contained HTML dashboard |
 | 9 | [ceph-ansible](https://joshjan20.github.io/ceph-ansible/) | Automating cluster tooling deployment with an idempotent Ansible playbook, verified via dry-run and repeat-run testing |
 | 10 | [ceph-code-fix](https://joshjan20.github.io/ceph-code-fix/) | **[PR #71407](https://github.com/ceph/ceph/pull/71407)**: the actual code fix (with regression tests) for the bug diagnosed in Part 3 |
+| 11 | [ceph-timezone-fix](https://joshjan20.github.io/ceph-timezone-fix/) | **[PR #71409](https://github.com/ceph/ceph/pull/71409)**: verifying and fixing a timezone bug in certificate expiry checks, reported by someone else and confirmed independently before acting on it |
+| 12 | [ceph-osd-drain-timestamp-fix](https://joshjan20.github.io/ceph-osd-drain-timestamp-fix/) | **[PR #71410](https://github.com/ceph/ceph/pull/71410)**: a related timezone/serialization bug in OSD drain timestamps, reconstructed and verified from a partially garbled report |
+| 13 | [ceph-prometheus-rgw-fix](https://joshjan20.github.io/ceph-prometheus-rgw-fix/) | **[PR #71413](https://github.com/ceph/ceph/pull/71413)**: a guard-condition/indexing mismatch in Prometheus metrics collection that could silently break cluster-wide metrics over one oddly-named RGW daemon |
 
 ---
 
 ## Upstream Contributions
 
+- **[PR #71407](https://github.com/ceph/ceph/pull/71407)**: cephadm certificate generation fix (X.509 Common Name length limit), with unit tests, own discovery
+- **[PR #71409](https://github.com/ceph/ceph/pull/71409)**: cephadm certificate expiry timezone fix, with unit tests, verified from someone else's report
+- **[PR #71410](https://github.com/ceph/ceph/pull/71410)**: OSD drain timestamp timezone/serialization fix, with unit tests, verified from a partially garbled report
+- **[PR #71413](https://github.com/ceph/ceph/pull/71413)**: Prometheus RGW metrics IndexError fix, with unit tests, verified from a detailed report
 - **[PR #71405](https://github.com/ceph/ceph/pull/71405)**: RGW + AWS CLI quickstart documentation
-- **[PR #71407](https://github.com/ceph/ceph/pull/71407)**: cephadm certificate generation fix (X.509 Common Name length limit), with unit tests
 - Bug report submitted via Ceph's official issue tracker (see [Part 5](https://joshjan20.github.io/ceph-tracker-report/) for status)
 
 ---
@@ -44,6 +50,7 @@ I'm particularly interested in the operational side of distributed storage at sc
 - **Observability:** Grafana, Prometheus, alerting rules and state machines
 - **Automation:** Ansible (idempotent playbooks), Python tooling
 - **Performance:** `rados bench`, throughput vs. IOPS analysis, dashboard generation
+- **Debugging:** verifying bug reports against real source before trusting them, reproducing failures with real code, root-causing across cephadm and Prometheus subsystems
 - **Community:** issue tracker engagement, documentation and code contributions to `ceph/ceph`
 
 ---
