@@ -1,18 +1,18 @@
-# Ceph & Distributed Storage: A Hands-On Portfolio
+# Ceph & Distributed Storage
 
-## Why Ceph
+## Why I Started This
 
 I come from a software and infrastructure automation background, hands-on with AWS, Ansible at scale, and reliability-critical systems. What pulled me toward Ceph specifically was a simple question I couldn't stop thinking about: when AWS S3 advertises 99.999999999% durability, what does that actually mean, mechanically? Not as a marketing number, but as a system you could build, break, and watch recover.
 
-So I built one. A real 3-node Ceph cluster, from scratch, on my own infrastructure, and pushed it as far as I reasonably could: simulating failures, diagnosing and fixing a genuine upstream bug, setting up monitoring and alerting, automating deployment, benchmarking performance, and contributing the results back to the Ceph project itself.
+So I built one. A real 3-node Ceph cluster, from scratch, on my own infrastructure. Once it was running, I kept finding more worth digging into: what happens when a node actually dies, why a certificate was silently failing, how to see the cluster's health at a glance instead of squinting at terminal output, how it performs under load. A few of those threads led further than I expected, including two pull requests I ended up opening against `ceph/ceph` itself.
 
-This page is the index for that work. Each linked project is a complete, documented, evidence-backed piece, screenshots, real command output, and in two cases, live pull requests against `ceph/ceph` itself.
+This page links to that work as it stands. Each project below is documented as I actually did it, real command output, real screenshots, and in two cases, live pull requests still working their way through review.
 
-I'm particularly interested in the operational side of distributed storage at scale: how systems like Ceph get run reliably across large clusters and multiple data centers, the tooling and automation that makes that sustainable, and the open-source community that maintains it. That's the direction I want to keep growing in.
+I'm particularly interested in the operational side of distributed storage at scale: how systems like Ceph get run reliably across large clusters and multiple data centers, the tooling and automation that makes that sustainable, and the open-source community that maintains it. That's the direction I want to keep learning in.
 
 ---
 
-## The Series
+## What's Here
 
 | # | Project | What it covers |
 |---|---|---|
