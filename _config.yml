@@ -1,3 +1,3 @@
 theme: jekyll-theme-cayman
 title: Ceph and Distributed Storage
-description: Notes from building and running a real Ceph cluster, including five pull requests to ceph/ceph
+description: Notes from building and running a real Ceph cluster, including seven pull requests to ceph/ceph
