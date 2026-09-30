@@ -21,10 +21,10 @@ I'm particularly interested in the operational side of distributed storage at sc
 | 3 | [ceph-grafana](https://joshjan20.github.io/ceph-grafana/) | Diagnosing a real cephadm certificate bug down to the exact root cause, fixing it locally, and visualizing the cluster |
 | 4 | [ceph-alerting](https://joshjan20.github.io/ceph-alerting/) | Building and triggering a real automated Grafana alert, with a timestamped state-machine trace (Normal → Pending → Alerting) |
 | 5 | [ceph-tracker-report](https://joshjan20.github.io/ceph-tracker-report/) | Reporting the Part 3 bug through Ceph's official issue tracker, including the real account-activation friction involved |
-| 6 | [ceph-maintenance-tool](https://joshjan20.github.io/ceph-maintenance-tool/) | A real Python maintenance/debugging tool: structured exit codes, `--quiet` mode for cron, JSON output |
-| 7 | [ceph-doc-contribution](https://joshjan20.github.io/ceph-doc-contribution/) | **[PR #71405](https://github.com/ceph/ceph/pull/71405)**: a documentation contribution filling a real gap between RGW deployment and S3 client usage |
+| 6 | [ceph-maintenance-tool](https://github.com/joshjan20/ceph-maintenance-tool) | A real Python maintenance/debugging tool: structured exit codes, `--quiet` mode for cron, JSON output |
+| 7 | [ceph-rgw-docs](https://joshjan20.github.io/ceph-rgw-docs/) | **[PR #71405](https://github.com/ceph/ceph/pull/71405)**: a documentation contribution filling a real gap between RGW deployment and S3 client usage |
 | 8 | [ceph-benchmarking](https://joshjan20.github.io/ceph-benchmarking/) | Performance benchmarking (throughput vs. IOPS, large vs. small objects) with a generated, self-contained HTML dashboard |
-| 9 | [ceph-ansible](https://joshjan20.github.io/ceph-ansible/) | Automating cluster tooling deployment with an idempotent Ansible playbook, verified via dry-run and repeat-run testing |
+| 9 | [ceph-ansible-automation](https://joshjan20.github.io/ceph-ansible-automation/) | Automating cluster tooling deployment with an idempotent Ansible playbook, verified via dry-run and repeat-run testing |
 | 10 | [ceph-code-fix](https://joshjan20.github.io/ceph-code-fix/) | **[PR #71407](https://github.com/ceph/ceph/pull/71407)**: the actual code fix (with regression tests) for the bug diagnosed in Part 3 |
 | 11 | [ceph-timezone-fix](https://joshjan20.github.io/ceph-timezone-fix/) | **[PR #71409](https://github.com/ceph/ceph/pull/71409)**: verifying and fixing a timezone bug in certificate expiry checks, reported by someone else and confirmed independently before acting on it |
 | 12 | [ceph-osd-drain-timestamp-fix](https://joshjan20.github.io/ceph-osd-drain-timestamp-fix/) | **[PR #71410](https://github.com/ceph/ceph/pull/71410)**: a related timezone/serialization bug in OSD drain timestamps, reconstructed and verified from a partially garbled report |
@@ -35,9 +35,9 @@ I'm particularly interested in the operational side of distributed storage at sc
 ## Upstream Contributions
 
 - **[PR #71407](https://github.com/ceph/ceph/pull/71407)**: cephadm certificate generation fix (X.509 Common Name length limit), with unit tests, own discovery
-- **[PR #71409](https://github.com/ceph/ceph/pull/71409)**: cephadm certificate expiry timezone fix, with unit tests, verified from someone else's report
-- **[PR #71410](https://github.com/ceph/ceph/pull/71410)**: OSD drain timestamp timezone/serialization fix, with unit tests, verified from a partially garbled report
-- **[PR #71413](https://github.com/ceph/ceph/pull/71413)**: Prometheus RGW metrics IndexError fix, with unit tests, verified from a detailed report
+- **[PR #71409](https://github.com/ceph/ceph/pull/71409)**: cephadm certificate expiry timezone fix, with unit tests, verified from someone else's report (tracker [#80928](https://tracker.ceph.com/issues/80928))
+- **[PR #71410](https://github.com/ceph/ceph/pull/71410)**: OSD drain timestamp timezone/serialization fix, with unit tests, verified from a partially garbled report (tracker [#80929](https://tracker.ceph.com/issues/80929))
+- **[PR #71413](https://github.com/ceph/ceph/pull/71413)**: Prometheus RGW metrics IndexError fix, with unit tests, verified from a detailed report (tracker [#80930](https://tracker.ceph.com/issues/80930)). Under upstream review: a Ceph developer reproduced the bug on a live cluster and confirmed the fix resolves it
 - **[PR #71405](https://github.com/ceph/ceph/pull/71405)**: RGW + AWS CLI quickstart documentation
 - Bug report submitted via Ceph's official issue tracker (see [Part 5](https://joshjan20.github.io/ceph-tracker-report/) for status)
 
